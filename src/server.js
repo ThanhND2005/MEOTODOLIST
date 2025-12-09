@@ -27,7 +27,7 @@ route(app);
 (async() =>{
     try {
         await configDatabase();
-        app.listen(port,()=> console.log(`Hello, app listening at http://localhost:${port}`));
+        app.listen(port,()=> console.log(`app listening at http://localhost:${port}`));
     } catch (error) {
         console.log(error);
     }
