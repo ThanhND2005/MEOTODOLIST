@@ -1,0 +1,249 @@
+html,
+body {
+  min-height: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.parent {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 300px 1fr 100px;
+  grid-template-rows: 80px 1fr 80px;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  background-color: #fffcf7;
+}
+
+.side-bar {
+  grid-area: 1 / 1 / 4 / 2;
+  background-color: #fff0e5;
+  border-radius: 10px;
+}
+.main {
+  grid-area: 2 / 2 / 3 / 3;
+  background-color: #fffcf7;
+  border-radius: 10px;
+  padding: 30px;
+}
+.header {
+  grid-area: 1 / 2 / 2 / 4;
+  background-color: #fffcf7;
+  border-radius: 10px;
+  padding: 20px;
+}
+.footer {
+  grid-area: 3 / 2 / 4 / 4;
+  background-color: #fffcf7;
+  border-radius: 10px;
+}
+.sub {
+  grid-area: 2 / 3 / 3 / 4;
+  background-color: #fffcf7;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+.img-custome {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.btn-custome {
+  margin-top: 20px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 20px;
+  position: relative;
+}
+.gif1-custome {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  animation: slide-down 3s linear 0.5s infinite;
+}
+@keyframes slide-down {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(250px);
+    scale: 1.5;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.gif2-custome {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  position: absolute;
+  transform: translate(-125px, -15px);
+}
+.main-content {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  border: solid #fff0e5;
+  border-radius: 20px;
+  background-image: url('https://res.cloudinary.com/dhylrhxsa/image/upload/v1765243235/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_1_kwllnd.png');
+  background-size: cover;
+  background-position: center;
+}
+.link-custome {
+  text-decoration: none;
+  color: black;
+}
+.link-custome:hover {
+  color: black;
+}
+.title-btn {
+  background-color: #fff6ea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+  transform: translate(25px, 50px);
+}
+.title1-btn {
+  background-color: #fff0e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  border-radius: 20px;
+  position: relative;
+  transform: translate(25px, 60px);
+}
+.form-custome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid lightblue;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px 5px;
+}
+
+.btn-primary {
+  border-radius: 20px;
+}
+.btn-danger {
+  border-radius: 20px;
+  width: 80px;
+}
+.dialog-custome {
+  width: 800px;
+  height: 300px;
+  border: solid lightblue;
+  border-radius: 20px;
+  object-fit: cover;
+}
+.dialog-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.temp-style-normal {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightskyblue;
+}
+.temp-style-cool {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightsteelblue;
+}
+.temp-style-warm {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightsalmon;
+}
+#gif-display-area {
+  /* Khu vực chứa GIF */
+  margin-bottom: 25px;
+  padding: 10px;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#current-gif {
+  
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 5px;
+}
+#loading-overlay {
+  
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  
+  background-color: rgba(255, 255, 255); 
+  
+  z-index: 9999; 
+  
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  visibility: visible;
+  opacity: 1;
+  
+}
+.hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+.weather-style{
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+.description-style{
+  font-weight: 400;
+  color: #333333;
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 16px;
+}
+.title-style{
+  font-weight: 400;
+  color: #333333;
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 20px;
+}
+.head-style{
+  font-weight: 400;
+  color: #333333;
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 40px;
+}

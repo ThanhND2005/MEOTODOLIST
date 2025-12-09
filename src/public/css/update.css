@@ -1,0 +1,9 @@
+.page-style{
+    width: 600px;
+    height: 300px;
+    border: solid #add8e6;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    transform: translate(350px,100px);
+}

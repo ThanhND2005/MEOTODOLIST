@@ -1,0 +1,13 @@
+const express = require('express');
+const route = express.Router();
+const userController = require('../controllers/userController');
+const upload = require('../config/cloudinary');
+route.get('/',userController.getHome);
+route.get('/login',userController.getLoginPage);
+route.post('/login',userController.checkUser);
+route.get('/register',userController.getRegisterPage);
+route.post('/register',userController.creatUser);
+route.get('/logout',userController.Logout);
+route.get('/updateAvatar',userController.getUpdatePage);
+route.post('/updateAvatar',upload.single('avatar'),userController.updateAvatar);
+module.exports = route;

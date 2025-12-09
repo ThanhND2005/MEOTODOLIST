@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <div id="loading-overlay">
+      <div id="gif-display-area">
+        <img
+          id="current-gif"
+          src="https://i.pinimg.com/originals/36/ee/50/36ee50b371a196a9d9af22ec8a8402bf.gif"
+          alt="Ảnh động hiện tại"
+          width="300"
+          height="200"
+        />
+      </div>
+    </div>
+    <div class="parent">
+      <div class="side-bar">
+        <div>
+          <div class="dropdown dropdown-custome">
+            <button
+              class="btn dropdown-toggle btn-custome"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img src="<%= user.avatar %>" alt="avatar" class="img-custome" />
+              <h6><%= user.name %></h6>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" href="/updateAvatar" id="updateAvatar"
+                  >Cập nhập avatar</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+            </ul>
+          </div>
+          <div class="title-btn">
+            <a href="" class="link-custome">Task đang làm</a>
+          </div>
+        </div>
+      </div>
+      <div class="header">
+        <% if (weather.main.temp <18) { %>
+        <div class="weather-style">
+          <h2 class="temp-style-cool"><%= weather.main.temp %>°C</h2>
+          <h2 class="temp-style-cool"><%= weather.weather[0].description %></h2>
+        </div>
+        <% } %> <% if (weather.main.temp >27) { %>
+        <div class="weather-style">
+          <h2 class="temp-style-warm"><%= weather.main.temp %>°C</h2>
+          <h2 class="temp-style-warm"><%= weather.weather[0].description %></h2>
+        </div>
+        <% } %> <% if(weather.main.temp >=18 && weather.main.temp <=27) { %>
+        <div class="weather-style">
+          <h2 class="temp-style-normal"><%= weather.main.temp %>°C</h2>
+          <h2 class="temp-style-normal">
+            <%= weather.weather[0].description %>
+          </h2>
+        </div>
+        <% } %>
+       
+      </div>
+      <div class="main">
+        <div class="main-content">
+          <h3 class="mb-3 head-style">Việc làm hôm nay:</h3>
+          <% tasks.forEach(item => { %>
+
+          <form
+            action="/task/completed/<%= item._id %>"
+            method="post"
+            class="form-custome"
+          >
+            <input type="hidden" name="_method" value="PATCH" />
+            <div class="task-custome">
+              <strong class="title-style"><%= item.title %></strong>
+              <br />
+              <small class="description-style"><%= item.description %></small>
+            </div>
+            <button type="submit" class="btn btn-primary">hoàn thành</button>
+          </form>
+          <% }) %>
+          <hr class="dropdown-divider" />
+
+          <button type="button" class="btn btn-primary" id="openDialogButton">
+            Thêm task
+          </button>
+        </div>
+      </div>
+      <dialog id="addTaskDialog" class="dialog-custome">
+        <h2>Thêm Task Mới</h2>
+        <form method="post" action="/task/create">
+          <label for="taskName" class="form-label">Tiêu đề</label>
+          <input
+            type="text"
+            class="form-control"
+            id="taskName"
+            name="title"
+            clasrequired
+          />
+
+          <label for="description" class="form-label">Chi tiết</label>
+          <input type="text" class="form-control" name="description" />
+
+          <div class="dialog-buttons">
+            <button type="button" id="cancelButton" class="btn btn-danger">
+              Hủy
+            </button>
+            <button
+              type="submit"
+              value="add"
+              id="addButton"
+              class="btn btn-primary"
+            >
+              Thêm Task
+            </button>
+          </div>
+        </form>
+      </dialog>
+      <div class="footer"></div>
+      <div class="sub">
+        <img
+          src="https://i.pinimg.com/originals/35/d0/ba/35d0ba9d59207714c5a0a31c28706f96.gif"
+          alt="..."
+          class="gif2-custome"
+        />
+      </div>
+    </div>
+    <script>
+      window.onload = function () {
+        const loader = document.getElementById("loading-overlay");
+        setTimeout(() => {
+          loader.classList.add("hidden");
+        }, 2000);
+      };
+    </script>
+    <script>
+      const dialog = document.getElementById("addTaskDialog");
+      const openButton = document.getElementById("openDialogButton");
+      const cancelButton = document.getElementById("cancelButton");
+      const taskForm = document.getElementById("taskForm");
+
+      openButton.addEventListener("click", () => {
+        dialog.showModal();
+      });
+
+      cancelButton.addEventListener("click", () => {
+        dialog.close();
+      });
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
