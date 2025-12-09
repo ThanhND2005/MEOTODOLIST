@@ -12,7 +12,7 @@ const configSession = (app) =>{
             ttl: 1000*60*60*24*7,
         }),
         cookie: {
-            secure: false,
+            secure: true,
             httpOnly: true,
             maxAge: 1000*60*60*24*7,
         }
