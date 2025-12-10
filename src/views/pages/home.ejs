@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang chủ</title>
-    <link rel="icon" type="image/jpg" href="https://i.pinimg.com/736x/eb/82/50/eb8250175f5d6530328b946ff268a2cc.jpg">
+    <link
+      rel="icon"
+      type="image/jpg"
+      href="https://i.pinimg.com/736x/eb/82/50/eb8250175f5d6530328b946ff268a2cc.jpg"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -61,7 +65,43 @@
         </div>
       </div>
       <div class="header">
-        <% if (weather.main.temp <18) { %>
+        <% if (aqi.data.aqi <= 50) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-tot">AQI:</h2>
+          <h2 class="aqi-style-tot"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-tot">Không khí tốt</h2>
+        </div>
+        <% } %> <% if (aqi.data.aqi > 50 && aqi.data.aqi <=100) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-vuaphai">AQI:</h2>
+          <h2 class="aqi-style-vuaphai"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-vuaphai">vừa phải</h2>
+        </div>
+        <% } %> <% if (aqi.data.aqi > 101 && aqi.data.aqi <=150) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-khonglanhmanh">AQI:</h2>
+          <h2 class="aqi-style-khonglanhmanh"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-khonglanhmanh">không lành mạnh</h2>
+        </div>
+        <% } %> <% if (aqi.data.aqi > 150 && aqi.data.aqi <=200) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-onha">AQI:</h2>
+          <h2 class="aqi-style-onha"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-onha">nên ở nhà</h2>
+        </div>
+        <% } %> <% if (aqi.data.aqi > 200 && aqi.data.aqi <=300) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-nguyhiem">AQI:</h2>
+          <h2 class="aqi-style-nguyhiem"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-nguyhiem">rất nguy hiểm</h2>
+        </div>
+        <% } %><% if (aqi.data.aqi > 300) { %>
+        <div class="aqi-style">
+          <h2 class="aqi-style-chetnguoi">AQI:</h2>
+          <h2 class="aqi-style-chetnguoi"><%= aqi.data.aqi %></h2>
+          <h2 class="aqi-style-chetnguoi">hít phát chết luôn</h2>
+        </div>
+        <% } %> <% if (weather.main.temp <18) { %>
         <div class="weather-style">
           <h2 class="temp-style-cool"><%= weather.main.temp %>°C</h2>
           <h2 class="temp-style-cool"><%= weather.weather[0].description %></h2>
@@ -79,7 +119,6 @@
           </h2>
         </div>
         <% } %>
-       
       </div>
       <div class="main">
         <div class="main-content">

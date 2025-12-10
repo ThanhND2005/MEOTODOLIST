@@ -8,6 +8,12 @@ const getWeather = async ()=>{
     const weather = await respone.json();
     return weather;
 }
+const getAqi = async ()=>{
+    const url = "https://api.waqi.info/feed/here/?token=383e6bef50d0ff5818216f0adcf224a976a4c03d";
+    const respone  = await fetch(url);
+    const aqi = await respone.json();
+    return aqi;
+}
 const getLoginPage = (req,res)=>{
     const errorMessage = req.flash('error');
     res.status(200).render('pages/login',{
@@ -22,13 +28,15 @@ const getRegisterPage = (req,res)=>{
 }
 const getHome = async (req,res) =>{
     if(req.session.user){
-        user = req.session.user;
-        tasks = await Task.find({username:user.username, delete:'false'}).lean();
-        weather = await getWeather();
+        const user = req.session.user;
+        const tasks = await Task.find({username:user.username, delete:'false'}).lean();
+        const weather = await getWeather();
+        const aqi = await getAqi();
         res.status(200).render('pages/home',{
             user : user,
             tasks : tasks,
             weather : weather,
+            aqi :aqi,
         });
     }
     else {

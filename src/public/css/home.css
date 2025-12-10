@@ -31,6 +31,8 @@ body {
   background-color: #fffcf7;
   border-radius: 10px;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .footer {
   grid-area: 3 / 2 / 4 / 4;
@@ -173,6 +175,7 @@ body {
   font-size: 50px;
   color: lightsalmon;
 }
+
 #gif-display-area {
   /* Khu vực chứa GIF */
   margin-bottom: 25px;
@@ -222,6 +225,53 @@ body {
   display: flex;
   justify-content: right;
   gap: 10px;
+}
+.aqi-style{
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+.aqi-style-tot {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightgreen;
+}
+.aqi-style-vuaphai {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightgoldenrodyellow;
+}
+.aqi-style-khonglanhmanh {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: lightsalmon;
+}
+.aqi-style-onha {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: orangered;
+}
+.aqi-style-nguyhiem {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: purple;
+}
+.aqi-style-chetnguoi {
+  font-family: "Patrick Hand", cursive;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  color: black;
 }
 .description-style{
   font-weight: 400;
