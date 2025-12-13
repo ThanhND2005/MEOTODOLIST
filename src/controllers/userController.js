@@ -9,7 +9,7 @@ const getWeather = async ()=>{
     return weather;
 }
 const getAqi = async ()=>{
-    const url = "https://api.waqi.info/feed/vietnam/hanoi/?token=383e6bef50d0ff5818216f0adcf224a976a4c03d";
+    const url = "https://api.waqi.info/feed/geo:21.08;105.85/?token=383e6bef50d0ff5818216f0adcf224a976a4c03d";
     const respone  = await fetch(url);
     const aqi = await respone.json();
     return aqi;

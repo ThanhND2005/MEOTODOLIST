@@ -5,7 +5,7 @@ const route = require('./routes/index');
 const configDatabase = require('./config/database');
 const configViewEngine = require('./config/viewEngine');
 const configSession = require('./config/session');
-const port = process.env.PORT;
+const port = process.env.PORT || 443;
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 configViewEngine(app);

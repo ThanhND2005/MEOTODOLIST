@@ -3,6 +3,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
 const configSession = (app) =>{
+    app.set('trust proxy',1);
     app.use(session({
         secret: process.env.SESSION_SECRET_KEY,
         resave: false,
@@ -12,9 +13,10 @@ const configSession = (app) =>{
             ttl: 1000*60*60*24*7,
         }),
         cookie: {
-            secure: false,
+            secure: true,
             httpOnly: true,
             maxAge: 1000*60*60*24*7,
+            sameSite: 'lax'
         }
     }));
 }
